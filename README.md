@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 0E3 Landing
 
-## Getting Started
+Landing oficial de **0E3 · Cero Es Tres** para [https://0e3.com.ar](https://0e3.com.ar).
 
-First, run the development server:
+## Stack
 
-```bash
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion
+- Lucide React
+
+## Desarrollo local
+
+```powershell
+cd C:\Users\Asus\Proyectos\0E3_WORKSPACE\landing
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+npm run dev      # servidor de desarrollo
+npm run build    # build de produccion
+npm run start    # servidor produccion
+npm run lint     # eslint
+```
 
-## Learn More
+## Estructura
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+  app/                 # layout, metadata, page
+  components/          # secciones de la landing
+  lib/                 # constantes y utilidades
+public/
+  logo/                # logo institucional
+  icons/               # favicon
+  social/              # Open Graph placeholder
+  mockups/             # reservado para assets futuros
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel (recomendado)
 
-## Deploy on Vercel
+1. Importar el repo `ceroes3group/0e3-landing`
+2. Framework preset: **Next.js**
+3. Build command: `npm run build`
+4. Output: automático
+5. Dominio custom: `0e3.com.ar`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Firebase Hosting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `npm run build`
+2. Configurar Firebase Hosting con output de Next.js o export estatico segun estrategia elegida
+3. Apuntar DNS de `0e3.com.ar`
+
+### Cloudflare Pages
+
+1. Conectar repo GitHub
+2. Build command: `npm run build`
+3. Output directory segun adaptador elegido
+4. Configurar dominio custom
+
+## Notas
+
+- Sin backend conectado
+- Sin formularios reales
+- Sin analytics reales
+- Sin secretos ni APIs productivas
+- Placeholders de LinkedIn y WhatsApp listos para reemplazar
+
+## Marca
+
+- Fondo: `#0E0E11`
+- Superficie: `#18181B`
+- Acento: `#1E90FF`
+- Tipografias: Inter + Space Grotesk
