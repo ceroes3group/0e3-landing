@@ -45,13 +45,18 @@ public/
 
 ## Deploy
 
-### Vercel (recomendado)
+### Vercel (recomendado — sin GitHub Actions)
 
-1. Importar el repo `ceroes3group/0e3-landing`
-2. Framework preset: **Next.js**
-3. Build command: `npm run build`
-4. Output: automático
-5. Dominio custom: `0e3.com.ar`
+Guía completa: **[docs/DEPLOY-VERCEL.md](docs/DEPLOY-VERCEL.md)**
+
+Resumen:
+
+1. Crear cuenta en https://vercel.com con GitHub
+2. Importar `ceroes3group/0e3-landing`
+3. Deploy (Next.js auto-detectado)
+4. Agregar dominio `0e3.com.ar` en Settings → Domains
+
+No requiere scope `workflow` ni verificación extra de `gh`.
 
 ### Firebase Hosting
 
