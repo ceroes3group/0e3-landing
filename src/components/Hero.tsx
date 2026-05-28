@@ -7,10 +7,10 @@ import { site } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 const navItems = [
-  { label: "Productos", href: "#productos" },
-  { label: "Filosofía", href: "#filosofia" },
-  { label: "Experiencia", href: "#experiencia" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Accesos", href: "/#accesos" },
+  { label: "Apps", href: "/apps/" },
+  { label: "Productos", href: "/#productos" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export function Header() {
@@ -22,7 +22,7 @@ export function Header() {
       className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-background/70 backdrop-blur-xl"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="#" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/logo/0e3-logo.png"
             alt="0E3"
@@ -46,7 +46,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href="#contacto" variant="secondary">
+          <Button href="/#contacto" variant="secondary">
             Contactar
           </Button>
         </div>
@@ -83,9 +83,9 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="#productos">Ver productos</Button>
-            <Button href="#contacto" variant="secondary">
-              Contactar
+            <Button href="/apps/">Ver apps</Button>
+            <Button href="/#accesos" variant="secondary">
+              Ver accesos
             </Button>
           </div>
         </motion.div>

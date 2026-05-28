@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:firebase": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:hosting": "npm run build:firebase && firebase deploy --only hosting:production",
+    "deploy:hosting:preview": "npm run build:firebase && firebase hosting:channel:deploy preview --only hosting:production"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",

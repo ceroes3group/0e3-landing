@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "oe3-institutional"
+  },
+  "targets": {
+    "oe3-institutional": {
+      "hosting": {
+        "production": [
+          "0es3-com-ar"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

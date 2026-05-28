@@ -22,6 +22,9 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap gap-6 text-sm text-muted">
+          <Link href="/apps/" className="transition-colors hover:text-white">
+            Apps
+          </Link>
           <Link href={site.github} className="transition-colors hover:text-white">
             GitHub
           </Link>
