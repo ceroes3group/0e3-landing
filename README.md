@@ -1,14 +1,15 @@
 # 0E3 Landing
 
-Landing oficial de **0E3 · Cero Es Tres** para [https://0e3.com.ar](https://0e3.com.ar).
+Landing oficial de **0E3 · Cero Es Tres** para [https://0es3.com.ar](https://0es3.com.ar).
 
 ## Stack
 
-- Next.js App Router
+- Next.js App Router (export estático)
 - TypeScript
 - Tailwind CSS v4
 - Framer Motion
 - Lucide React
+- Firebase Hosting (producción)
 
 ## Desarrollo local
 
@@ -23,10 +24,11 @@ Abrir [http://localhost:3000](http://localhost:3000)
 ## Scripts
 
 ```powershell
-npm run dev      # servidor de desarrollo
-npm run build    # build de produccion
-npm run start    # servidor produccion
-npm run lint     # eslint
+npm run dev              # servidor de desarrollo
+npm run build            # build de produccion (export estatico → out/)
+npm run build:firebase   # alias de build para deploy Firebase
+npm run deploy:hosting   # build + firebase deploy
+npm run lint             # eslint
 ```
 
 ## Estructura
@@ -40,36 +42,28 @@ public/
   logo/                # logo institucional
   icons/               # favicon
   social/              # Open Graph placeholder
-  mockups/             # reservado para assets futuros
+out/                   # export estatico (generado, no commitear)
+firebase.json          # config Firebase Hosting
+.firebaserc            # proyecto y target de deploy
 ```
 
 ## Deploy
 
-### Vercel (recomendado — sin GitHub Actions)
+### Firebase Hosting (producción — recomendado)
 
-Guía completa: **[docs/DEPLOY-VERCEL.md](docs/DEPLOY-VERCEL.md)**
+Guía completa: **[docs/DEPLOY-FIREBASE.md](docs/DEPLOY-FIREBASE.md)**
 
 Resumen:
 
-1. Crear cuenta en https://vercel.com con GitHub
-2. Importar `ceroes3group/0e3-landing`
-3. Deploy (Next.js auto-detectado)
-4. Agregar dominio `0e3.com.ar` en Settings → Domains
+1. Proyecto Firebase: `oe3-institutional`
+2. Hosting site: `0es3-com-ar`
+3. Build: `npm run build:firebase` → salida en `out/`
+4. Deploy: `npm run deploy:hosting`
+5. Dominio: `0es3.com.ar`
 
-No requiere scope `workflow` ni verificación extra de `gh`.
+### Vercel (alternativa)
 
-### Firebase Hosting
-
-1. `npm run build`
-2. Configurar Firebase Hosting con output de Next.js o export estatico segun estrategia elegida
-3. Apuntar DNS de `0e3.com.ar`
-
-### Cloudflare Pages
-
-1. Conectar repo GitHub
-2. Build command: `npm run build`
-3. Output directory segun adaptador elegido
-4. Configurar dominio custom
+Guía: **[docs/DEPLOY-VERCEL.md](docs/DEPLOY-VERCEL.md)**
 
 ## Notas
 

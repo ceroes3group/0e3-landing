@@ -1,4 +1,5 @@
 import { Header, Hero } from "@/components/Hero";
+import { EcosystemAccess } from "@/components/EcosystemAccess";
 import { Products } from "@/components/Products";
 import { Philosophy } from "@/components/Philosophy";
 import { Experience } from "@/components/Experience";
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <EcosystemAccess />
         <Products />
         <Philosophy />
         <Experience />

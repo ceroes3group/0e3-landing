@@ -7,9 +7,9 @@ import { site } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 
 const navItems = [
+  { label: "Accesos", href: "#accesos" },
   { label: "Productos", href: "#productos" },
   { label: "Filosofía", href: "#filosofia" },
-  { label: "Experiencia", href: "#experiencia" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -83,9 +83,9 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="#productos">Ver productos</Button>
-            <Button href="#contacto" variant="secondary">
-              Contactar
+            <Button href="#accesos">Ver accesos</Button>
+            <Button href="#productos" variant="secondary">
+              Ver productos
             </Button>
           </div>
         </motion.div>

@@ -4,7 +4,7 @@ export const site = {
   tagline: "Tecnología que simplifica.",
   description:
     "Software, automatización e inteligencia artificial para simplificar operaciones reales.",
-  url: "https://0e3.com.ar",
+  url: "https://0es3.com.ar",
   email: "ceroes3group@gmail.com",
   github: "https://github.com/ceroes3group",
   docs: "https://github.com/ceroes3group/0e3-docs",
@@ -13,6 +13,105 @@ export const site = {
 } as const;
 
 export type ProductStatus = "Disponible" | "En desarrollo" | "Próximamente";
+
+export type HubLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+  status?: ProductStatus;
+};
+
+export const ecosystemHub = [
+  {
+    id: "aliados-comerciales",
+    title: "Aliados Comerciales",
+    description:
+      "Programa para aliados independientes que representan soluciones 0E3. Ingresos según resultados, sin relación de dependencia.",
+    icon: "handshake",
+    links: [
+      {
+        label: "Información del programa",
+        href: "#aliados-comerciales",
+      },
+      {
+        label: "Solicitar acceso",
+        href: `mailto:${site.email}?subject=Aliados%20Comerciales%200E3`,
+      },
+    ] satisfies HubLink[],
+  },
+  {
+    id: "negocios",
+    title: "NexoPOS y sistemas para negocios",
+    description:
+      "Punto de venta, gastronomía y herramientas operativas para comercios que necesitan control y velocidad.",
+    icon: "store",
+    links: [
+      {
+        label: "0E3 POS",
+        href: "https://nexopos-dc.web.app",
+        external: true,
+        status: "Disponible",
+      },
+      {
+        label: "0E3 Gastro (web)",
+        href: "https://e3-gastro-web.web.app",
+        external: true,
+        status: "En desarrollo",
+      },
+      {
+        label: "Documentación POS",
+        href: site.docs,
+        external: true,
+      },
+    ] satisfies HubLink[],
+  },
+  {
+    id: "apps",
+    title: "Apps personales y comerciales",
+    description:
+      "Aplicaciones para finanzas personales, microemprendimientos y operaciones del día a día.",
+    icon: "smartphone",
+    links: [
+      {
+        label: "0E3 HOME",
+        href: `mailto:${site.email}?subject=0E3%20HOME%20-%20Acceso`,
+        status: "En desarrollo",
+      },
+      {
+        label: "0E3 Recovery",
+        href: `mailto:${site.email}?subject=0E3%20Recovery`,
+        status: "Próximamente",
+      },
+      {
+        label: "0E3 Track",
+        href: `mailto:${site.email}?subject=0E3%20Track`,
+        status: "Próximamente",
+      },
+    ] satisfies HubLink[],
+  },
+  {
+    id: "contacto",
+    title: "Contacto",
+    description:
+      "Consultas comerciales, soporte institucional y propuestas para simplificar tu operación.",
+    icon: "mail",
+    links: [
+      {
+        label: "Escribinos por email",
+        href: `mailto:${site.email}`,
+      },
+      {
+        label: "GitHub",
+        href: site.github,
+        external: true,
+      },
+      {
+        label: "Ir a la sección contacto",
+        href: "#contacto",
+      },
+    ] satisfies HubLink[],
+  },
+] as const;
 
 export const products = [
   {
