@@ -23,30 +23,35 @@ function HubLinkItem({ link }: { link: HubLink }) {
     link.external || link.href.startsWith("http") || link.href.startsWith("mailto:");
 
   return (
-    <Link
-      href={link.href}
-      target={isExternal && link.href.startsWith("http") ? "_blank" : undefined}
-      rel={isExternal && link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="group flex items-center justify-between gap-3 rounded-xl border border-white/5 bg-surface/70 px-4 py-3 transition-colors hover:border-accent/20 hover:bg-accent/5"
-    >
-      <span className="text-sm font-medium text-white group-hover:text-accent">
-        {link.label}
-      </span>
-      {link.status ? (
-        <span
-          className={cn(
-            "shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium ring-1",
-            statusStyles[link.status],
-          )}
-        >
-          {link.status}
+    <div className="rounded-xl border border-white/5 bg-surface/70 px-4 py-3">
+      <Link
+        href={link.href}
+        target={isExternal && link.href.startsWith("http") ? "_blank" : undefined}
+        rel={isExternal && link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+        className="group flex items-center justify-between gap-3"
+      >
+        <span className="text-sm font-medium text-white group-hover:text-accent">
+          {link.label}
         </span>
-      ) : (
-        <span className="text-xs text-muted transition-colors group-hover:text-accent">
-          →
-        </span>
-      )}
-    </Link>
+        {link.status ? (
+          <span
+            className={cn(
+              "shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-medium ring-1",
+              statusStyles[link.status],
+            )}
+          >
+            {link.status}
+          </span>
+        ) : (
+          <span className="text-xs text-muted transition-colors group-hover:text-accent">
+            →
+          </span>
+        )}
+      </Link>
+      {link.note ? (
+        <p className="mt-2 text-[11px] text-muted">{link.note}</p>
+      ) : null}
+    </div>
   );
 }
 

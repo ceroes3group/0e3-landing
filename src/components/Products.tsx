@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Cloud,
@@ -32,21 +33,8 @@ export function Products() {
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product, index) => {
           const Icon = iconMap[product.icon as keyof typeof iconMap];
-
-          return (
-            <motion.article
-              key={product.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              whileHover={{ y: -4 }}
-              className="group card-surface rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-[0_24px_60px_rgba(30,144,255,0.08)]"
-            >
+          const CardInner = (
+            <>
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent/10 ring-1 ring-accent/20">
                   <Icon className="h-5 w-5 text-accent" />
@@ -66,6 +54,37 @@ export function Products() {
               <p className="mt-3 text-sm leading-7 text-muted">
                 {product.description}
               </p>
+              {product.href ? (
+                <p className="mt-4 text-sm font-medium text-accent">
+                  Ver ficha →
+                </p>
+              ) : (
+                <p className="mt-4 text-xs text-muted">Próximamente</p>
+              )}
+            </>
+          );
+
+          return (
+            <motion.article
+              key={product.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{ y: -4 }}
+              className="group card-surface rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-[0_24px_60px_rgba(30,144,255,0.08)]"
+            >
+              {product.href ? (
+                <Link href={product.href} className="block">
+                  {CardInner}
+                </Link>
+              ) : (
+                CardInner
+              )}
             </motion.article>
           );
         })}

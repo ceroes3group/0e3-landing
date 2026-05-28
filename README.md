@@ -1,6 +1,8 @@
 # 0E3 Landing
 
-Landing oficial de **0E3 · Cero Es Tres** para [https://0es3.com.ar](https://0es3.com.ar).
+Landing oficial de **0E3 · Cero Es Tres** para [https://0e3.com.ar](https://0e3.com.ar).
+
+Alias redirect: `0es3.com.ar` → `0e3.com.ar` (Cloudflare).
 
 ## Stack
 

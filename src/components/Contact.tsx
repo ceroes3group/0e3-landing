@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Code2, Briefcase, Mail, MessageCircle } from "lucide-react";
+import { Code2, Mail } from "lucide-react";
 import { site } from "@/lib/constants";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
@@ -19,18 +19,7 @@ const channels = [
     value: "ceroes3group",
     href: site.github,
     icon: Code2,
-  },
-  {
-    label: "LinkedIn",
-    value: "Próximamente",
-    href: site.linkedin,
-    icon: Briefcase,
-  },
-  {
-    label: "WhatsApp",
-    value: "Próximamente",
-    href: site.whatsapp,
-    icon: MessageCircle,
+    external: true,
   },
 ];
 
@@ -57,6 +46,8 @@ export function Contact() {
                 <Link
                   key={channel.label}
                   href={channel.href}
+                  target={channel.external ? "_blank" : undefined}
+                  rel={channel.external ? "noopener noreferrer" : undefined}
                   className="group rounded-2xl border border-white/5 bg-surface/80 p-5 transition-colors hover:border-accent/20 hover:bg-accent/5"
                 >
                   <Icon className="mb-4 h-5 w-5 text-accent" />
@@ -68,6 +59,9 @@ export function Contact() {
               );
             })}
           </div>
+          <p className="mt-6 text-xs text-muted">
+            LinkedIn y WhatsApp institucionales: pendientes de publicación.
+          </p>
         </motion.div>
 
         <motion.div
@@ -85,8 +79,8 @@ export function Contact() {
               Menos fricción. Más control.
             </h3>
             <p className="mt-4 text-sm leading-7 text-muted">
-              Sin formularios conectados por ahora. Usá los canales de contacto
-              mientras preparamos el flujo comercial oficial.
+              Sin formularios conectados por ahora. Usá email o GitHub mientras
+              preparamos el flujo comercial oficial.
             </p>
           </div>
           <div className="mt-8">
