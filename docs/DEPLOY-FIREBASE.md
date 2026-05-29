@@ -88,4 +88,5 @@ Ver checklist detallado: `docs/DNS-FIREBASE-CLOUDFLARE-CHECKLIST.md`
 
 - Repo: https://github.com/ceroes3group/0e3-landing
 - Firebase Console: https://console.firebase.google.com/project/oe3-institutional/hosting
-- Plan migración: `../docs/oe3-domain-migration-plan.md` (workspace)
+- Hub documentación: https://github.com/ceroes3group/0e3-docs *(repo sugerido; local: `0E3_WORKSPACE/docs`)*
+- Plan migración: `domains/oe3-domain-migration-plan.md` en hub `0e3-docs`

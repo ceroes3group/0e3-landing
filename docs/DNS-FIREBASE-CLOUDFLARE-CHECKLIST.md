@@ -1,8 +1,10 @@
-# Checklist DNS — Firebase + Cloudflare (Fase 2)
+# Checklist DNS — Firebase + Cloudflare
 
-**Solo instrucciones manuales. No ejecutar sin aprobación.**
+**Checklist operativo del repo landing.** Estado transversal en hub docs.
 
-Base: auditoría `AUDITORIA_ECOSISTEMA_0E3_DOMINIOS_HOSTING.md`
+Base: auditoría en hub [`0e3-docs/architecture/AUDITORIA_ECOSISTEMA_0E3_DOMINIOS_HOSTING.md`](https://github.com/ceroes3group/0e3-docs/blob/main/architecture/AUDITORIA_ECOSISTEMA_0E3_DOMINIOS_HOSTING.md) *(repo sugerido; local: `0E3_WORKSPACE/docs/architecture/`)*
+
+**Estado 2026-05-27:** `0e3.com.ar` ✅ live + SSL. Redirect `0es3.com.ar` ✅ configurado en Cloudflare.
 
 ---
 
@@ -74,10 +76,10 @@ Invoke-WebRequest -Uri "https://0es3.com.ar" -MaximumRedirection 0
 
 Checklist:
 
-- [ ] `https://0e3.com.ar` → 200, certificado válido
-- [ ] `https://0es3.com.ar` → 301 → `0e3.com.ar`
-- [ ] `https://0es3-com-ar.web.app` sigue funcionando (compatibilidad)
-- [ ] Open Graph usa `0e3.com.ar` en metadata
+- [x] `https://0e3.com.ar` → 200, certificado válido
+- [x] `https://0es3.com.ar` → 301 → `0e3.com.ar`
+- [x] `https://0es3-com-ar.web.app` sigue funcionando (compatibilidad)
+- [x] Open Graph usa `0e3.com.ar` en metadata
 
 ---
 
