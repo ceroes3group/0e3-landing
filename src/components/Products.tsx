@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Cloud,
-  Radar,
-  Sparkles,
-  Store,
-  UtensilsCrossed,
-} from "lucide-react";
+import { Handshake, Store, UtensilsCrossed, Wrench } from "lucide-react";
 import { products, statusStyles } from "@/lib/constants";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
@@ -16,28 +10,39 @@ import { cn } from "@/lib/utils";
 const iconMap = {
   store: Store,
   utensils: UtensilsCrossed,
-  sparkles: Sparkles,
-  cloud: Cloud,
-  radar: Radar,
+  handshake: Handshake,
+  wrench: Wrench,
 };
 
 export function Products() {
   return (
     <Section
       id="productos"
-      eyebrow="Ecosistema"
-      title="Productos diseñados para operar mejor"
-      description="Una suite modular que crece con tu negocio. Cada producto resuelve una capa concreta de la operación."
-      className="border-t border-white/5 bg-[linear-gradient(180deg,rgba(11,31,51,0.18),transparent)]"
+      eyebrow="Productos"
+      title="Empezá por 0E3 POS"
+      description="Nuestro foco comercial es el punto de venta. Los demás productos complementan o están en camino."
+      className="border-t border-white/5"
     >
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2">
         {products.map((product, index) => {
           const Icon = iconMap[product.icon as keyof typeof iconMap];
           const CardInner = (
             <>
               <div className="mb-5 flex items-start justify-between gap-4">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent/10 ring-1 ring-accent/20">
-                  <Icon className="h-5 w-5 text-accent" />
+                <div
+                  className={cn(
+                    "flex h-11 w-11 items-center justify-center rounded-2xl ring-1",
+                    product.featured
+                      ? "bg-primary/10 ring-primary/25"
+                      : "bg-white/5 ring-white/10",
+                  )}
+                >
+                  <Icon
+                    className={cn(
+                      "h-5 w-5",
+                      product.featured ? "text-primary" : "text-muted",
+                    )}
+                  />
                 </div>
                 <span
                   className={cn(
@@ -56,7 +61,7 @@ export function Products() {
               </p>
               {product.href ? (
                 <p className="mt-4 text-sm font-medium text-accent">
-                  Ver ficha →
+                  Ver más →
                 </p>
               ) : (
                 <p className="mt-4 text-xs text-muted">Próximamente</p>
@@ -75,8 +80,13 @@ export function Products() {
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              whileHover={{ y: -4 }}
-              className="group card-surface rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-[0_24px_60px_rgba(30,144,255,0.08)]"
+              whileHover={product.href ? { y: -4 } : undefined}
+              className={cn(
+                "card-surface rounded-[1.5rem] p-6 transition-shadow duration-300",
+                product.featured &&
+                  "ring-1 ring-primary/20 hover:shadow-[0_24px_60px_rgba(37,99,235,0.12)]",
+                product.id === "pos" && "md:col-span-2",
+              )}
             >
               {product.href ? (
                 <Link href={product.href} className="block">

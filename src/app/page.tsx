@@ -1,23 +1,18 @@
-import { Header, Hero } from "@/components/Hero";
-import { EcosystemAccess } from "@/components/EcosystemAccess";
+import { SiteHeader } from "@/components/SiteHeader";
+import { Hero } from "@/components/Hero";
 import { Products } from "@/components/Products";
-import { Philosophy } from "@/components/Philosophy";
-import { Experience } from "@/components/Experience";
-import { TechStack } from "@/components/TechStack";
+import { Trust } from "@/components/Trust";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <SiteHeader />
       <main>
         <Hero />
-        <EcosystemAccess />
         <Products />
-        <Philosophy />
-        <Experience />
-        <TechStack />
+        <Trust />
         <Contact />
       </main>
       <Footer />

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/constants";
 
@@ -9,25 +9,25 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-display-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: "0E3 — Tecnología que simplifica",
+  title: "0E3 — Controlá tu negocio con 0E3 POS",
   description: site.description,
   keywords: [
     "0E3",
     "Cero Es Tres",
-    "software",
-    "automatización",
-    "inteligencia artificial",
     "POS",
-    "SaaS",
+    "punto de venta",
+    "comercios",
     "Argentina",
+    "stock",
+    "caja",
   ],
   authors: [{ name: site.legalName }],
   creator: site.legalName,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: site.url,
     siteName: site.name,
-    title: "0E3 — Tecnología que simplifica",
+    title: "0E3 — Controlá tu negocio con 0E3 POS",
     description: site.description,
     images: [
       {
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0E3 — Tecnología que simplifica",
+    title: "0E3 — Controlá tu negocio con 0E3 POS",
     description: site.description,
     images: ["/social/og-placeholder.svg"],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0E0E11",
+  themeColor: "#111318",
   colorScheme: "dark",
 };
 
@@ -77,7 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full scroll-smooth`}
+      className={`${inter.variable} ${plusJakarta.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full bg-background text-foreground antialiased">
         {children}

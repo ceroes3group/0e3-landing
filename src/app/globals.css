@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0e0e11;
+  --background: #111318;
   --surface: #18181b;
   --surface-elevated: #1f1f23;
   --foreground: #ffffff;
   --muted: #a1a1aa;
-  --accent: #1e90ff;
-  --accent-deep: #0b1f33;
+  --primary: #2563eb;
+  --secondary: #1e3a5f;
+  --accent: #0ea5e9;
+  --success: #10b981;
+  --accent-deep: #1e3a5f;
   --border: rgba(255, 255, 255, 0.08);
-  --glow: rgba(30, 144, 255, 0.35);
+  --glow: rgba(37, 99, 235, 0.35);
 }
 
 @theme inline {
@@ -18,11 +21,14 @@
   --color-surface-elevated: var(--surface-elevated);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-success: var(--success);
   --color-accent-deep: var(--accent-deep);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
+  --font-display: var(--font-display-jakarta);
 }
 
 * {
@@ -40,7 +46,7 @@ body {
 }
 
 ::selection {
-  background: rgba(30, 144, 255, 0.35);
+  background: rgba(37, 99, 235, 0.35);
   color: #ffffff;
 }
 
@@ -55,8 +61,8 @@ body {
 .glow-orb {
   background: radial-gradient(
     circle,
-    rgba(30, 144, 255, 0.22) 0%,
-    rgba(11, 31, 51, 0.4) 35%,
+    rgba(37, 99, 235, 0.2) 0%,
+    rgba(30, 58, 95, 0.35) 35%,
     transparent 70%
   );
 }

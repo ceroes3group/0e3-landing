@@ -17,25 +17,31 @@ export function Footer() {
           <p className="mt-4 max-w-sm text-sm leading-7 text-muted">
             {site.tagline}
             <br />
-            Software, automatización e IA para operaciones reales.
+            {site.description}
+          </p>
+          <p className="mt-2 text-xs text-muted">
+            {site.legalName} · Argentina
           </p>
         </div>
 
         <div className="flex flex-wrap gap-6 text-sm text-muted">
-          <Link href="/apps/" className="transition-colors hover:text-white">
-            Apps
+          <Link href="/" className="transition-colors hover:text-white">
+            Inicio
           </Link>
-          <Link href={site.github} className="transition-colors hover:text-white">
-            GitHub
+          <Link href="/#productos" className="transition-colors hover:text-white">
+            Productos
           </Link>
-          <Link href={site.docs} className="transition-colors hover:text-white">
-            Docs
+          <Link href="/precios/" className="transition-colors hover:text-white">
+            Precios
+          </Link>
+          <Link href="/#contacto" className="transition-colors hover:text-white">
+            Contacto
           </Link>
           <Link
             href={`mailto:${site.email}`}
             className="transition-colors hover:text-white"
           >
-            Contacto
+            {site.email}
           </Link>
         </div>
       </div>

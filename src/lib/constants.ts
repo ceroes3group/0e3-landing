@@ -3,13 +3,25 @@ export const site = {
   legalName: "Cero Es Tres",
   tagline: "Tecnología que simplifica.",
   description:
-    "Software, automatización e inteligencia artificial para simplificar operaciones reales.",
+    "Ventas, stock, caja y reportes para comercios argentinos. Simple, desde PC, tablet o celular.",
+  heroTitle: "Controlá tu negocio desde cualquier lugar",
+  heroSubtitle:
+    "Ventas, stock, caja y reportes en una sola plataforma simple para comercios.",
   url: "https://0e3.com.ar",
   aliasUrl: "https://0es3.com.ar",
   email: "ceroes3group@gmail.com",
+  /** Número WhatsApp solo dígitos con código país (ej. 5493754123456). Vacío = ocultar botón WA. */
+  whatsapp: "",
   github: "https://github.com/ceroes3group",
   docs: "https://github.com/ceroes3group/0e3-docs",
 } as const;
+
+export const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Productos", href: "/#productos" },
+  { label: "Precios", href: "/precios/" },
+  { label: "Contacto", href: "/#contacto" },
+] as const;
 
 /** Dominios objetivo (DNS custom — pendiente de conexión en varios casos) */
 export const domains = {
@@ -24,310 +36,296 @@ export const domains = {
   docs: "https://docs.0e3.com.ar",
 } as const;
 
-/** URLs operativas hoy (Firebase .web.app) — usadas hasta cutover DNS */
+/** Acceso al producto (uso interno; no mostrar URLs técnicas al visitante) */
 export const liveUrls = {
   pos: "https://nexopos-dc.web.app",
+  posSignup: "https://nexopos-dc.web.app/signup",
+  posLogin: "https://nexopos-dc.web.app/login",
   home: "https://oe3-home-beta.web.app",
   aliados: "https://oe3-aliados-comerciales.web.app",
   gastroStaging: "https://e3-gastro-staging-web.web.app",
   docs: site.docs,
 } as const;
 
-export type ProductStatus = "Disponible" | "En desarrollo" | "Próximamente";
+export function getWhatsAppHref(
+  message = "Hola, quiero consultar por 0E3 POS.",
+): string | null {
+  const digits = String(site.whatsapp || "").replace(/\D/g, "");
+  if (!digits) return null;
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+}
 
-export type HubLink = {
-  label: string;
-  href: string;
-  external?: boolean;
-  status?: ProductStatus;
-  note?: string;
-};
+export function getConsultSecondaryCta(
+  subject = "Consulta 0E3 POS",
+  waMessage = "Hola, quiero consultar por 0E3 POS.",
+) {
+  const wa = getWhatsAppHref(waMessage);
+  if (wa) {
+    return { label: "Consultar por WhatsApp", href: wa };
+  }
+  return {
+    label: "Consultar por email",
+    href: `mailto:${site.email}?subject=${encodeURIComponent(subject)}`,
+  };
+}
+
+export type ProductStatus = "Disponible" | "En desarrollo" | "Próximamente";
 
 export type AppPageEntry = {
   slug: string;
   name: string;
   tagline: string;
   description: string;
+  forWho: string;
   status: ProductStatus;
-  targetDomain: string;
-  liveUrl: string;
   internalPath: string;
   highlights: string[];
+  includes: string[];
+  /** CTA principal (signup, mailto, etc.) */
+  primaryCta: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  /** Si true, no mostrar enlaces directos a apps en beta */
+  hidePublicAppLink?: boolean;
 };
 
 export const appPages: AppPageEntry[] = [
   {
     slug: "nexopos",
-    name: "0E3 POS / NexoPOS",
-    tagline: "Punto de venta multi-tenant para comercios reales.",
+    name: "0E3 POS",
+    tagline: "El sistema para vender, controlar stock y cerrar caja sin complicaciones.",
     description:
-      "Control de ventas, stock, usuarios, sucursales y operación diaria con arquitectura multi-tenant.",
+      "0E3 POS está pensado para comercios que necesitan orden en el día a día: cobrar rápido, saber qué hay en el depósito, registrar movimientos de caja y ver reportes claros. Funciona en PC, tablet o celular.",
+    forWho:
+      "Despensas, kioscos, minimercados, distribuidoras, panaderías y comercios con una o varias sucursales.",
     status: "Disponible",
-    targetDomain: domains.pos,
-    liveUrl: liveUrls.pos,
     internalPath: "/apps/nexopos/",
     highlights: [
-      "Multi-tenant y multi-sucursal",
-      "Panel web en producción",
-      "Migración de marca hacia 0E3 POS",
+      "Punto de venta y cajero móvil",
+      "Control de stock por sucursal",
+      "Caja, gastos y reportes",
+      "Clientes y cuenta corriente",
+      "Varios usuarios con permisos",
     ],
+    includes: [
+      "Ventas en mostrador y desde el celular",
+      "Productos, precios y listas",
+      "Compras y proveedores (según plan)",
+      "Cierre de caja diario",
+      "Dashboard y reportes de ventas",
+    ],
+    primaryCta: { label: "Probar 0E3 POS", href: liveUrls.posSignup },
+    secondaryCta: getConsultSecondaryCta("Consulta 0E3 POS", "Hola, quiero probar 0E3 POS."),
   },
   {
     slug: "gastro",
     name: "0E3 Gastro",
-    tagline: "Operación gastronómica con mesas, comandas y cocina.",
+    tagline: "Mesas, comandas y cocina organizadas para tu local.",
     description:
-      "POS gastronómico con app Android, web/PWA para PC y flujos de servicio pensados para el rubro.",
+      "Solución para restaurantes, bares y locales gastronómicos. Estamos terminando la versión comercial; por ahora podés consultarnos para conocer avances y sumarte a la lista de interesados.",
+    forWho: "Restaurantes, bares, cafeterías y locales con servicio en salón.",
     status: "En desarrollo",
-    targetDomain: domains.gastroStaging,
-    liveUrl: liveUrls.gastroStaging,
     internalPath: "/apps/gastro/",
     highlights: [
-      "Web staging operativa",
-      "APK y OTA en hosting separado",
-      "Producción en preparación",
+      "Mesas y comandas",
+      "Flujo cocina / mostrador",
+      "Pensado para el ritmo del servicio",
     ],
+    includes: [
+      "Operación de salón",
+      "Comandas a cocina",
+      "Control básico de ventas del turno",
+    ],
+    primaryCta: {
+      label: "Consultar disponibilidad",
+      href: `mailto:${site.email}?subject=0E3%20Gastro%20-%20consulta`,
+    },
+    secondaryCta: {
+      label: "Ver planes",
+      href: "/precios/",
+    },
+    hidePublicAppLink: true,
   },
   {
     slug: "aliados",
     name: "Aliados Comerciales",
-    tagline: "Programa para aliados independientes 0E3.",
+    tagline: "Sumate como partner independiente de 0E3.",
     description:
-      "Captación y gestión de aliados comerciales. Tecnología que simplifica, sin relación de dependencia.",
+      "Programa para quienes quieren representar soluciones 0E3 en su zona. Sin relación de dependencia: ingresos según resultados y acompañamiento del equipo.",
+    forWho: "Consultores, revendedores y profesionales que trabajan con comercios.",
     status: "En desarrollo",
-    targetDomain: domains.aliados,
-    liveUrl: liveUrls.aliados,
     internalPath: "/apps/aliados/",
     highlights: [
-      "Panel web desplegado",
-      "Módulo aparte del sitio institucional",
-      "Acceso por subdominio futuro",
+      "Comercialización de productos 0E3",
+      "Capacitación y materiales",
+      "Contacto directo con el equipo",
     ],
+    includes: [
+      "Acceso al programa de aliados",
+      "Materiales comerciales",
+      "Soporte para presentaciones",
+    ],
+    primaryCta: {
+      label: "Quiero ser aliado",
+      href: `mailto:${site.email}?subject=Aliados%20Comerciales%200E3`,
+    },
+    hidePublicAppLink: true,
   },
   {
     slug: "home",
     name: "0E3 HOME",
-    tagline: "Control de gastos personales, familiares y microemprendimientos.",
+    tagline: "Gastos personales y del hogar, en un solo lugar.",
     description:
-      "App Flutter para finanzas personales con captura rápida, categorías y visibilidad clara del mes.",
+      "App para organizar gastos familiares o de un emprendimiento chico. Producto en evolución, separado de la línea comercial B2B.",
+    forWho: "Uso personal y familiar (no es el POS para tu comercio).",
     status: "En desarrollo",
-    targetDomain: domains.home,
-    liveUrl: liveUrls.home,
     internalPath: "/apps/home/",
     highlights: [
-      "Beta Android y web",
-      "Firebase oe3-home-beta",
-      "Acceso web disponible hoy",
+      "Registro rápido de gastos",
+      "Categorías simples",
+      "Vista del mes",
     ],
+    includes: ["App en desarrollo", "Consultas por email"],
+    primaryCta: {
+      label: "Consultar",
+      href: `mailto:${site.email}?subject=0E3%20HOME`,
+    },
+    hidePublicAppLink: true,
   },
 ];
-
-export const ecosystemHub = [
-  {
-    id: "aliados-comerciales",
-    title: "Aliados Comerciales",
-    description:
-      "Programa para aliados independientes que representan soluciones 0E3. Ingresos según resultados, sin relación de dependencia.",
-    icon: "handshake",
-    links: [
-      {
-        label: "Página del programa",
-        href: "/apps/aliados/",
-      },
-      {
-        label: "Abrir app (staging/beta)",
-        href: liveUrls.aliados,
-        external: true,
-        status: "En desarrollo",
-        note: `Destino: ${domains.aliados}`,
-      },
-      {
-        label: "Solicitar acceso",
-        href: `mailto:${site.email}?subject=Aliados%20Comerciales%200E3`,
-      },
-    ] satisfies HubLink[],
-  },
-  {
-    id: "negocios",
-    title: "NexoPOS y sistemas para negocios",
-    description:
-      "Punto de venta, gastronomía y herramientas operativas para comercios que necesitan control y velocidad.",
-    icon: "store",
-    links: [
-      {
-        label: "0E3 POS",
-        href: liveUrls.pos,
-        external: true,
-        status: "Disponible",
-        note: `Destino: ${domains.pos}`,
-      },
-      {
-        label: "0E3 Gastro (web staging)",
-        href: liveUrls.gastroStaging,
-        external: true,
-        status: "En desarrollo",
-        note: `Destino: ${domains.gastroStaging}`,
-      },
-      {
-        label: "Página NexoPOS",
-        href: "/apps/nexopos/",
-      },
-      {
-        label: "Página Gastro",
-        href: "/apps/gastro/",
-      },
-    ] satisfies HubLink[],
-  },
-  {
-    id: "apps",
-    title: "Apps personales y comerciales",
-    description:
-      "Aplicaciones para finanzas personales, microemprendimientos y operaciones del día a día.",
-    icon: "smartphone",
-    links: [
-      {
-        label: "0E3 HOME",
-        href: liveUrls.home,
-        external: true,
-        status: "En desarrollo",
-        note: `Destino: ${domains.home}`,
-      },
-      {
-        label: "Página 0E3 HOME",
-        href: "/apps/home/",
-      },
-      {
-        label: "Catálogo de apps",
-        href: "/apps/",
-      },
-    ] satisfies HubLink[],
-  },
-  {
-    id: "contacto",
-    title: "Contacto",
-    description:
-      "Consultas comerciales, soporte institucional y propuestas para simplificar tu operación.",
-    icon: "mail",
-    links: [
-      {
-        label: "Escribinos por email",
-        href: `mailto:${site.email}`,
-      },
-      {
-        label: "GitHub",
-        href: site.github,
-        external: true,
-      },
-      {
-        label: "Ir a la sección contacto",
-        href: "/#contacto",
-      },
-    ] satisfies HubLink[],
-  },
-] as const;
 
 export const products = [
   {
     id: "pos",
     name: "0E3 POS",
     description:
-      "Punto de venta multi-tenant para comercios que necesitan control, velocidad y operación real.",
+      "Vendé, controlá stock, cerrá caja y mirá reportes. El producto principal para tu comercio.",
     status: "Disponible" as ProductStatus,
     icon: "store",
     href: "/apps/nexopos/",
+    featured: true,
   },
   {
     id: "gastro",
     name: "0E3 Gastro",
-    description:
-      "Operación gastronómica con ventas, mesas, comandas y flujos pensados para el servicio.",
+    description: "Mesas, comandas y operación para restaurantes y bares.",
     status: "En desarrollo" as ProductStatus,
     icon: "utensils",
     href: "/apps/gastro/",
+    featured: true,
   },
   {
-    id: "ai",
-    name: "0E3 AI",
-    description:
-      "Automatización e inteligencia artificial aplicada a procesos, soporte y decisiones.",
-    status: "Próximamente" as ProductStatus,
-    icon: "sparkles",
-    href: undefined,
-  },
-  {
-    id: "cloud",
-    name: "0E3 Cloud",
-    description:
-      "Infraestructura, servicios compartidos y operaciones cloud para el ecosistema 0E3.",
+    id: "aliados",
+    name: "Aliados Comerciales",
+    description: "Representá soluciones 0E3 como partner independiente.",
     status: "En desarrollo" as ProductStatus,
-    icon: "cloud",
-    href: undefined,
+    icon: "handshake",
+    href: "/apps/aliados/",
+    featured: true,
   },
   {
-    id: "track",
-    name: "0E3 Track",
-    description:
-      "Trazabilidad, auditoría y seguimiento operativo con visibilidad clara del negocio.",
+    id: "motorlab",
+    name: "0E3 MotorLab",
+    description: "Herramientas para talleres y negocios del rubro automotor.",
     status: "Próximamente" as ProductStatus,
-    icon: "radar",
+    icon: "wrench",
     href: undefined,
+    featured: false,
   },
 ];
 
-export const philosophyPillars = [
+export const posBenefits = [
   {
-    title: "Simplicidad",
-    description: "Menos fricción, más claridad en cada operación.",
+    title: "Vender más rápido",
+    description: "Cobrá en mostrador o desde el celular, con pocos pasos.",
   },
   {
-    title: "Automatización",
-    description: "Procesos que se resuelven solos, sin complejidad innecesaria.",
+    title: "Controlar stock",
+    description: "Sabé qué tenés en cada sucursal y qué se está agotando.",
   },
   {
-    title: "Control",
-    description: "Visibilidad real sobre ventas, equipos y decisiones.",
+    title: "Cerrar caja",
+    description: "Registrá ingresos, gastos y el cierre del día con claridad.",
   },
   {
-    title: "Escalabilidad",
-    description: "Arquitectura preparada para crecer con tu negocio.",
+    title: "Ver reportes",
+    description: "Ventas y movimientos en un panel fácil de leer.",
   },
   {
-    title: "Velocidad",
-    description: "Interfaces rápidas, flujos directos y respuesta inmediata.",
+    title: "Trabajar desde cualquier dispositivo",
+    description: "PC, tablet o celular: la misma operación, donde estés.",
   },
 ];
 
-export const techBadges = [
-  "Firebase",
-  "React",
-  "Cloud",
-  "IA",
-  "Android",
-  "Web",
-  "PWA",
+export const trustSignals = [
+  {
+    title: "Empresa argentina",
+    description: "Desarrollamos en Argentina, con foco en comercios reales.",
+  },
+  {
+    title: "Soporte humano",
+    description: "Te orientamos por email (y WhatsApp cuando esté activo) para elegir el plan correcto.",
+  },
+  {
+    title: "Productos en evolución",
+    description: "0E3 POS ya está disponible; Gastro y otros productos avanzan con clientes piloto.",
+  },
+  {
+    title: "Sin promesas infladas",
+    description: "Mostramos lo que el sistema hace hoy, sin métricas inventadas.",
+  },
 ];
 
-export const experienceFeatures = [
+export type PricingPlan = {
+  id: string;
+  name: string;
+  audience: string;
+  users: number;
+  branches: number;
+  highlights: string[];
+};
+
+export const pricingPlans: PricingPlan[] = [
   {
-    title: "Dashboards claros",
-    description: "Métricas accionables sin ruido visual.",
+    id: "start",
+    name: "START",
+    audience: "Kioscos, despensas y pequeños comercios.",
+    users: 2,
+    branches: 1,
+    highlights: [
+      "Ventas y punto de venta",
+      "Stock y caja",
+      "Clientes y reportes básicos",
+    ],
   },
   {
-    title: "Control operativo",
-    description: "Sucursales, usuarios y permisos en un solo lugar.",
+    id: "pro",
+    name: "PRO",
+    audience: "Autoservicios, minimercados y distribuidoras pequeñas.",
+    users: 6,
+    branches: 3,
+    highlights: [
+      "Todo START",
+      "Compras y proveedores",
+      "Transferencias entre sucursales",
+      "Listas de precios y auditoría",
+    ],
   },
   {
-    title: "IA aplicada",
-    description: "Automatización inteligente donde aporta valor real.",
-  },
-  {
-    title: "Nube confiable",
-    description: "Infraestructura moderna, segura y escalable.",
+    id: "empresa",
+    name: "EMPRESA",
+    audience: "Supermercados, fábricas, panaderías y negocios con producción.",
+    users: 15,
+    branches: 10,
+    highlights: [
+      "Todo PRO",
+      "Producción, recetas y materias primas",
+      "Más usuarios y sucursales",
+    ],
   },
 ];
 
 export const statusStyles: Record<ProductStatus, string> = {
-  Disponible: "bg-emerald-500/10 text-emerald-400 ring-emerald-500/20",
+  Disponible: "bg-success/10 text-success ring-success/20",
   "En desarrollo": "bg-blue-500/10 text-blue-400 ring-blue-500/20",
   "Próximamente": "bg-zinc-500/10 text-zinc-400 ring-zinc-500/20",
 };
@@ -335,3 +333,7 @@ export const statusStyles: Record<ProductStatus, string> = {
 export function getAppPage(slug: string): AppPageEntry | undefined {
   return appPages.find((page) => page.slug === slug);
 }
+
+/** Páginas destacadas en catálogo comercial (HOME al final, opcional) */
+export const catalogPages = appPages.filter((p) => p.slug !== "home");
+export const secondaryCatalogPages = appPages.filter((p) => p.slug === "home");
