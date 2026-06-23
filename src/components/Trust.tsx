@@ -9,8 +9,8 @@ export function Trust() {
     <Section
       id="confianza"
       eyebrow="Confianza"
-      title="Hecho para comercios reales"
-      description="Somos un equipo argentino. Priorizamos claridad, soporte cercano y productos que evolucionan con uso real."
+      title="Confianza de verdad"
+      description="Somos un equipo chico de Argentina. Hablamos claro, respondemos y construimos con comercios que usan el sistema todos los días."
       className="border-t border-white/5"
     >
       <div className="grid gap-4 md:grid-cols-2">

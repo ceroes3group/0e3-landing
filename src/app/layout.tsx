@@ -17,7 +17,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: "0E3 — Controlá tu negocio con 0E3 POS",
+  title: "0E3 POS — Gestión para negocios reales",
   description: site.description,
   keywords: [
     "0E3",
@@ -36,20 +36,20 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: site.url,
     siteName: site.name,
-    title: "0E3 — Controlá tu negocio con 0E3 POS",
+    title: "0E3 POS — Gestión para negocios reales",
     description: site.description,
     images: [
       {
         url: "/social/og-placeholder.svg",
         width: 1200,
         height: 630,
-        alt: "0E3 — Tecnología que simplifica",
+        alt: "0E3 POS — Gestión para negocios reales",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "0E3 — Controlá tu negocio con 0E3 POS",
+    title: "0E3 POS — Gestión para negocios reales",
     description: site.description,
     images: ["/social/og-placeholder.svg"],
   },

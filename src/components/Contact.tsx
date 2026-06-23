@@ -37,8 +37,8 @@ export function Contact() {
     <Section
       id="contacto"
       eyebrow="Contacto"
-      title="Te orientamos con el plan correcto"
-      description="Contanos qué tipo de negocio tenés y te orientamos con el plan correcto. Sin formularios complicados: hablá con nosotros directo."
+      title="¿Querés saber si 0E3 sirve para tu negocio?"
+      description="Contanos qué tipo de comercio tenés y te orientamos con el plan correcto. Nada de vueltas. Nada de venderte algo que no necesitás."
       className="border-t border-white/5"
     >
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -84,12 +84,12 @@ export function Contact() {
         >
           <div>
             <h3 className="font-display text-2xl font-semibold text-white">
-              ¿Listo para probar 0E3 POS?
+              Probá 0E3 POS cuando quieras
             </h3>
             <p className="mt-4 text-sm leading-7 text-muted">
-              Creá tu cuenta y explorá el sistema. Si preferís que te guiemos
-              antes, escribinos y te ayudamos a elegir entre START, PRO o
-              EMPRESA.
+              Creá tu cuenta y mirá cómo funciona con tu negocio. Si preferís
+              que te guiemos antes, escribinos y te ayudamos a elegir START,
+              PRO o EMPRESA.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -97,9 +97,9 @@ export function Contact() {
               Ver planes
             </Button>
             {whatsappHref ? (
-              <Button href={whatsappHref}>WhatsApp</Button>
+              <Button href={whatsappHref}>Consultar por WhatsApp</Button>
             ) : (
-              <Button href={`mailto:${site.email}`}>Escribinos</Button>
+              <Button href={`mailto:${site.email}`}>Consultar por email</Button>
             )}
           </div>
         </motion.div>

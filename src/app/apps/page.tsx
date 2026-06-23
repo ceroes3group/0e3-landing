@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Productos — 0E3",
   description:
-    "0E3 POS, Gastro, Aliados y más soluciones para comercios argentinos.",
+    "0E3 POS, Gastro y Aliados para comercios que trabajan todos los días.",
 };
 
 export default function AppsCatalogPage() {

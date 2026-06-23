@@ -35,8 +35,16 @@ export function Hero() {
             {site.heroTitle}
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-8 text-muted md:text-xl">
+          <p className="mt-5 max-w-xl text-xl font-medium leading-snug text-white md:text-2xl">
             {site.heroSubtitle}
+          </p>
+
+          <p className="mt-5 max-w-xl text-lg leading-8 text-muted">
+            {site.heroDescription}
+          </p>
+
+          <p className="mt-4 max-w-xl text-sm font-medium text-accent">
+            {site.heroTagline}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -47,7 +55,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 text-sm text-muted">
-            Para despensas, kioscos, minimercados y comercios que quieren orden sin planillas.
+            Kioscos, despensas, autoservicios y comercios que abren todos los días.
           </p>
         </motion.div>
 
@@ -61,7 +69,7 @@ export function Hero() {
           <div className="card-surface relative overflow-hidden rounded-[1.75rem] p-5 md:p-6">
             <div className="mb-5 border-b border-white/5 pb-4">
               <p className="text-sm font-medium text-white">0E3 POS</p>
-              <p className="text-xs text-muted">Lo esencial para tu comercio</p>
+              <p className="text-xs text-muted">Hecho para el ritmo del mostrador</p>
             </div>
 
             <ul className="space-y-3">

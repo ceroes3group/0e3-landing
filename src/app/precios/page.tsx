@@ -37,9 +37,13 @@ export default function PreciosPage() {
             Planes 0E3 POS
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
-            Elegí el plan según el tamaño de tu negocio. Los valores en pesos se
-            confirman al registrarte o al consultarnos — acá comparás qué incluye
-            cada uno.
+            Elegí un plan según el tamaño de tu negocio.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
+            No todos los comercios necesitan lo mismo. Por eso 0E3 se organiza
+            en planes simples: arrancás con lo necesario y podés crecer cuando
+            tu negocio lo pida. Los valores en pesos se confirman al
+            registrarte o al consultarnos.
           </p>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -102,7 +106,7 @@ export default function PreciosPage() {
               {whatsappHref ? (
                 <Button href={whatsappHref}>Consultar por WhatsApp</Button>
               ) : (
-                <Button href={`mailto:${site.email}`}>Escribinos por email</Button>
+                <Button href={`mailto:${site.email}`}>Consultar por email</Button>
               )}
               <Button href={liveUrls.posSignup} variant="secondary">
                 Probar 0E3 POS
