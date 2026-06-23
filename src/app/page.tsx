@@ -1,5 +1,7 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { Hero } from "@/components/Hero";
+import { FamiliarRoutine } from "@/components/FamiliarRoutine";
+import { WhyZeroE3 } from "@/components/WhyZeroE3";
 import { RealBusiness } from "@/components/RealBusiness";
 import { PainPoints } from "@/components/PainPoints";
 import { MerchantDifference } from "@/components/MerchantDifference";
@@ -14,6 +16,8 @@ export default function Home() {
       <SiteHeader />
       <main>
         <Hero />
+        <FamiliarRoutine />
+        <WhyZeroE3 />
         <RealBusiness />
         <PainPoints />
         <MerchantDifference />

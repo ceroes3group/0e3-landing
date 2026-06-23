@@ -15,8 +15,14 @@ export function Footer() {
             className="h-8 w-auto object-contain"
           />
           <p className="mt-4 max-w-sm text-sm leading-7 text-muted">
-            {site.tagline}
+            {site.brandFooterLead}
             <br />
+            {site.brandFooterLine}
+          </p>
+          <p className="mt-3 text-sm font-medium text-accent">
+            {site.brandPhrase}
+          </p>
+          <p className="mt-3 max-w-sm text-xs leading-6 text-muted">
             {site.description}
           </p>
           <p className="mt-2 text-xs text-muted">

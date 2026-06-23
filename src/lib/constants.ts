@@ -1,14 +1,17 @@
 export const site = {
   name: "0E3",
   legalName: "Cero Es Tres",
-  tagline: "Hecho para el mostrador.",
+  tagline: "Menos complicaciones. Más control.",
+  brandPhrase: "Menos complicaciones. Más control.",
+  posPhrase: "Menos tiempo administrando. Más tiempo vendiendo.",
+  brandFooterLead: "0E3 — Tecnología que simplifica.",
+  brandFooterLine: "Porque administrar un negocio ya es bastante difícil.",
   description:
-    "Vendé, controlá stock y cerrá caja sin planillas. 0E3 POS para kioscos, despensas y comercios de barrio.",
+    "Cero Es Tres. Tecnología pensada para comercios que abren todos los días — empezando por 0E3 POS.",
   heroTitle: "0E3 POS",
-  heroSubtitle: "El sistema de gestión pensado para negocios reales.",
+  heroSubtitle: "Cero complicaciones para administrar tu negocio.",
   heroDescription:
-    "Vendé, controlá stock, administrá tu caja y seguí tu negocio desde cualquier lugar.",
-  heroTagline: "Sin planillas. Sin complicaciones. Sin perder tiempo.",
+    "Dejá de adivinar al cerrar. Sabé qué vendiste, qué te queda y qué conviene reponer.",
   url: "https://0e3.com.ar",
   aliasUrl: "https://0es3.com.ar",
   email: "ceroes3group@gmail.com",
@@ -200,7 +203,7 @@ export const products = [
     id: "pos",
     name: "0E3 POS",
     description:
-      "Vendé, controlá stock y cerrá caja. El producto principal para tu comercio, hecho para el ritmo real del mostrador.",
+      "Para cuando necesitás vender, controlar stock y cerrar caja sin perder el día en papeles. Menos tiempo administrando, más tiempo vendiendo.",
     status: "Disponible" as ProductStatus,
     icon: "store",
     href: "/apps/nexopos/",
@@ -237,26 +240,44 @@ export const products = [
 
 export const posBenefits = [
   {
-    title: "Vendé más rápido",
-    description: "Cobrá en mostrador o desde el celular, con menos pasos.",
+    title: "Cobrá sin trabarte",
+    description: "Menos pasos en el mostrador, más ventas en el día.",
   },
   {
-    title: "Sabé qué queda en stock",
-    description: "Mirá qué tenés y qué se está agotando, sin adivinar.",
+    title: "Sabé qué te queda",
+    description: "No te agarre sin stock a mitad de hora pico.",
   },
   {
-    title: "Cerrá caja sin adivinar",
-    description: "Ingresos, gastos y el cierre del día, claros.",
+    title: "Cerrá sabiendo cuánto ganaste",
+    description: "Sin sumar en la servilleta ni dudar al apagar las luces.",
   },
   {
     title: "Mirá tu negocio desde el celular",
-    description: "Ventas y movimientos cuando los necesitás.",
+    description: "Aunque no estés en el local, sabés cómo viene el día.",
   },
   {
-    title: "Menos pasos, menos errores",
-    description: "Pantallas simples, hechas para el ritmo del mostrador.",
+    title: "Menos vueltas, más mostrador",
+    description: "Lo que necesitás, donde lo usás: atrás del mostrador.",
   },
 ];
+
+export const familiarRoutineContent = {
+  title: "¿Te suena familiar?",
+  steps: [
+    "Llegás temprano.",
+    "Abrís el local.",
+    "Atendés clientes.",
+    "Respondés WhatsApp.",
+    "Buscás precios.",
+    "Controlás stock.",
+    "Pagás proveedores.",
+  ],
+  punchline: "Y cuando termina el día...",
+  closing: "todavía te queda averiguar si realmente ganaste plata.",
+  bridge: "Ahí es donde entra 0E3.",
+  payoff:
+    "Para ayudarte a administrar mejor tu negocio sin sumar más complicaciones.",
+} as const;
 
 export const realBusinessContent = {
   title: "Pensado para negocios reales",
@@ -265,7 +286,7 @@ export const realBusinessContent = {
     "No para equipos de sistemas.",
     "No para personas que quieren aprender software durante semanas.",
   ],
-  body: "0E3 fue creado para quienes tienen que abrir un negocio todos los días y hacerlo funcionar.",
+  body: "Si abrís todos los días y el negocio depende de vos, esto es para vos.",
   idealFor: [
     "Kioscos",
     "Despensas",
@@ -277,9 +298,9 @@ export const realBusinessContent = {
 } as const;
 
 export const painPointsContent = {
-  title: "Problemas que vemos todos los días",
+  title: "Cuando el día se te complica",
   before: {
-    label: "Lo que suele pasar",
+    label: "Lo que te pasa",
     items: [
       "No saber cuánto dinero quedó realmente en caja.",
       "Vender productos sin darse cuenta de que ya no hay stock.",
@@ -289,10 +310,10 @@ export const painPointsContent = {
     ],
   },
   after: {
-    label: "Lo que cambia con 0E3",
+    label: "Lo que cambia para vos",
     items: [
       "Cada venta queda registrada.",
-      "El stock se actualiza automáticamente.",
+      "Sabés siempre qué productos te quedan.",
       "Sabés qué productos se venden más.",
       "Podés revisar tu negocio desde el celular.",
       "Tenés información clara para decidir mejor.",
@@ -300,35 +321,53 @@ export const painPointsContent = {
   },
 } as const;
 
-export const merchantDifferenceContent = {
-  titleLead: "Muchos sistemas están hechos por programadores.",
-  titleAccent: "0E3 está hecho para comerciantes.",
-  paragraphs: [
-    "Por eso priorizamos pantallas simples, procesos rápidos, información clara y menos pasos para hacer lo mismo.",
-    "La tecnología tiene que ayudarte a trabajar mejor. No convertirse en otro problema.",
+export const manifestoContent = {
+  lead: "Creemos que un sistema debería ahorrar tiempo. No consumirlo.",
+  question:
+    "Por eso cada función que agregamos tiene que responder una pregunta:",
+  test: "¿Hace más fácil el trabajo de quien abre su negocio todos los días?",
+  closing: "Si la respuesta es no, no la agregamos.",
+} as const;
+
+export const whyZeroE3Content = {
+  title: "¿Por qué 0E3?",
+  identityLead: "0E3 significa Cero Es Tres.",
+  identityPillars: [
+    "Cero complicaciones.",
+    "Cero vueltas.",
+    "Cero estrés.",
   ],
+  origin: [
+    "0E3 nació de una idea simple.",
+    "Administrar un negocio ya tiene suficientes desafíos.",
+    "El software no debería ser uno más.",
+  ],
+  lead: "La tecnología debería sacar problemas. No agregarlos.",
+  less: ["Menos pasos.", "Menos errores.", "Menos tiempo perdido."],
+  more: ["Más control.", "Más claridad.", "Más tranquilidad."],
+  closing: "Eso es 0E3.",
 } as const;
 
 export const trustSignals = [
   {
-    title: "Gente de acá",
+    title: "Menos tiempo en papeles",
     description:
-      "Desarrollamos en Argentina y hablamos el idioma del mostrador, no el del manual técnico.",
+      "Pasás menos horas ordenando cuentas y más tiempo en el mostrador.",
   },
   {
-    title: "Te respondemos nosotros",
+    title: "Te hablamos sin vueltas",
     description:
-      "Sin tickets eternos. Te orientamos por email para elegir el plan que te sirve.",
+      "Contanos tu comercio y te decimos si 0E3 te sirve. Sin charla de ventas.",
   },
   {
-    title: "0E3 POS ya funciona hoy",
+    title: "Probá antes de decidir",
     description:
-      "No te vendemos humo: podés probarlo y ver caja, stock y ventas en acción.",
+      "Mirá caja, stock y ventas con tu negocio. Vos juzgás si te alivia el día.",
   },
   {
-    title: "Sin números inventados",
+    title: "Hecho para tu rubro",
     description:
-      "No prometemos mil clientes ni crecimiento mágico. Mostramos lo que el sistema hace.",
+      "Kioscos, despensas, autoservicios y comercios familiares. No para corporaciones.",
   },
 ];
 

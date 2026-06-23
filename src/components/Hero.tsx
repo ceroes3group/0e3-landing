@@ -28,7 +28,7 @@ export function Hero() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--glow)]" />
-            {site.legalName} · {site.tagline}
+            {site.legalName} · {site.brandPhrase}
           </div>
 
           <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-6xl">
@@ -44,7 +44,7 @@ export function Hero() {
           </p>
 
           <p className="mt-4 max-w-xl text-sm font-medium text-accent">
-            {site.heroTagline}
+            {site.posPhrase}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -55,7 +55,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 text-sm text-muted">
-            Kioscos, despensas, autoservicios y comercios que abren todos los días.
+            Kioscos, despensas, minimercados y comercios que abren todos los días.
           </p>
         </motion.div>
 
@@ -69,7 +69,7 @@ export function Hero() {
           <div className="card-surface relative overflow-hidden rounded-[1.75rem] p-5 md:p-6">
             <div className="mb-5 border-b border-white/5 pb-4">
               <p className="text-sm font-medium text-white">0E3 POS</p>
-              <p className="text-xs text-muted">Hecho para el ritmo del mostrador</p>
+              <p className="text-xs text-muted">Tu día, con menos vueltas</p>
             </div>
 
             <ul className="space-y-3">

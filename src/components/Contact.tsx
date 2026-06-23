@@ -84,12 +84,12 @@ export function Contact() {
         >
           <div>
             <h3 className="font-display text-2xl font-semibold text-white">
-              Probá 0E3 POS cuando quieras
+              Mirá si te sirve
             </h3>
             <p className="mt-4 text-sm leading-7 text-muted">
-              Creá tu cuenta y mirá cómo funciona con tu negocio. Si preferís
-              que te guiemos antes, escribinos y te ayudamos a elegir START,
-              PRO o EMPRESA.
+              Abrí una cuenta y probá con tu negocio. Si preferís que te
+              orientemos antes, escribinos y te ayudamos a elegir START, PRO o
+              EMPRESA.
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">

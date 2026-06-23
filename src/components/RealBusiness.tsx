@@ -5,7 +5,7 @@ import { realBusinessContent } from "@/lib/constants";
 
 export function RealBusiness() {
   return (
-    <section className="relative border-t border-white/5 px-6 py-24 md:py-32">
+    <section className="relative border-t border-white/5 px-6 py-20 md:py-28">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

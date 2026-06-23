@@ -18,9 +18,9 @@ export function Products() {
   return (
     <Section
       id="productos"
-      eyebrow="Productos"
-      title="0E3 POS primero"
-      description="El punto de venta es nuestro foco. Gastro y Aliados suman cuando tu negocio lo necesita."
+      eyebrow="0E3"
+      title="Lo que necesitás para vender"
+      description="0E3 es la marca. 0E3 POS es donde empezás — Gastro y Aliados cuando tu negocio lo pida."
       className="border-t border-white/5"
     >
       <div className="grid gap-5 md:grid-cols-2">
