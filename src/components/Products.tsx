@@ -14,6 +14,10 @@ const iconMap = {
   wrench: Wrench,
 };
 
+function isExternalHref(href: string) {
+  return /^(mailto:|https?:|tel:)/i.test(href);
+}
+
 export function Products() {
   return (
     <Section
@@ -26,6 +30,12 @@ export function Products() {
       <div className="grid gap-5 md:grid-cols-2">
         {products.map((product, index) => {
           const Icon = iconMap[product.icon as keyof typeof iconMap];
+          const ctaLabel =
+            "ctaLabel" in product && typeof product.ctaLabel === "string"
+              ? product.ctaLabel
+              : product.href
+                ? "Ver más →"
+                : "Próximamente";
           const CardInner = (
             <>
               <div className="mb-5 flex items-start justify-between gap-4">
@@ -60,11 +70,9 @@ export function Products() {
                 {product.description}
               </p>
               {product.href ? (
-                <p className="mt-4 text-sm font-medium text-accent">
-                  Ver más →
-                </p>
+                <p className="mt-4 text-sm font-medium text-accent">{ctaLabel}</p>
               ) : (
-                <p className="mt-4 text-xs text-muted">Próximamente</p>
+                <p className="mt-4 text-xs text-muted">{ctaLabel}</p>
               )}
             </>
           );
@@ -89,9 +97,15 @@ export function Products() {
               )}
             >
               {product.href ? (
-                <Link href={product.href} className="block">
-                  {CardInner}
-                </Link>
+                isExternalHref(product.href) ? (
+                  <a href={product.href} className="block">
+                    {CardInner}
+                  </a>
+                ) : (
+                  <Link href={product.href} className="block">
+                    {CardInner}
+                  </Link>
+                )
               ) : (
                 CardInner
               )}

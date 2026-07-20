@@ -74,7 +74,11 @@ export function getConsultSecondaryCta(
   };
 }
 
-export type ProductStatus = "Disponible" | "En desarrollo" | "Próximamente";
+export type ProductStatus =
+  | "Disponible"
+  | "En desarrollo"
+  | "Próximamente"
+  | "Piloto controlado";
 
 export type AppPageEntry = {
   slug: string;
@@ -230,10 +234,12 @@ export const products = [
   {
     id: "motorlab",
     name: "0E3 MotorLab",
-    description: "Herramientas para talleres y negocios del rubro automotor.",
-    status: "Próximamente" as ProductStatus,
+    description:
+      "Gestión simple para talleres mecánicos: órdenes de trabajo, presupuestos, compras, cobros y cierre diario en un único flujo.",
+    status: "Piloto controlado" as ProductStatus,
     icon: "wrench",
-    href: undefined,
+    href: `mailto:${site.email}?subject=${encodeURIComponent("Solicitud acceso piloto 0E3 MotorLab")}&body=${encodeURIComponent("Hola, quiero solicitar acceso al piloto controlado de 0E3 MotorLab.\n\nNombre:\nTaller:\nCiudad:\nTeléfono:\n")}`,
+    ctaLabel: "Solicitar acceso al piloto",
     featured: false,
   },
 ];
@@ -424,6 +430,7 @@ export const statusStyles: Record<ProductStatus, string> = {
   Disponible: "bg-success/10 text-success ring-success/20",
   "En desarrollo": "bg-blue-500/10 text-blue-400 ring-blue-500/20",
   "Próximamente": "bg-zinc-500/10 text-zinc-400 ring-zinc-500/20",
+  "Piloto controlado": "bg-amber-500/10 text-amber-300 ring-amber-500/25",
 };
 
 export function getAppPage(slug: string): AppPageEntry | undefined {
