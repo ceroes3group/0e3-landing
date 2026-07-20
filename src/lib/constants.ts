@@ -49,6 +49,8 @@ export const liveUrls = {
   home: "https://oe3-home-beta.web.app",
   aliados: "https://oe3-aliados-comerciales.web.app",
   gastroStaging: "https://e3-gastro-staging-web.web.app",
+  /** URL operativa MotorLab verificada (sin DNS custom en hosting map → FALTA EVIDENCIA canónica) */
+  motorlab: "https://oe3-motorlab-pilot.web.app",
   docs: site.docs,
 } as const;
 
@@ -78,7 +80,8 @@ export type ProductStatus =
   | "Disponible"
   | "En desarrollo"
   | "Próximamente"
-  | "Piloto controlado";
+  | "Piloto controlado"
+  | "Operativo";
 
 export type AppPageEntry = {
   slug: string;
@@ -235,12 +238,16 @@ export const products = [
     id: "motorlab",
     name: "0E3 MotorLab",
     description:
-      "Gestión simple para talleres mecánicos: órdenes de trabajo, presupuestos, compras, cobros y cierre diario en un único flujo.",
-    status: "Piloto controlado" as ProductStatus,
+      "Gestión simple para talleres mecánicos. Administrá clientes, vehículos, órdenes de trabajo, presupuestos, compras, cobros y cierres diarios desde cualquier dispositivo.",
+    status: "Operativo" as ProductStatus,
     icon: "wrench",
-    href: `mailto:${site.email}?subject=${encodeURIComponent("Solicitud acceso piloto 0E3 MotorLab")}&body=${encodeURIComponent("Hola, quiero solicitar acceso al piloto controlado de 0E3 MotorLab.\n\nNombre:\nTaller:\nCiudad:\nTeléfono:\n")}`,
-    ctaLabel: "Solicitar acceso al piloto",
-    featured: false,
+    href: liveUrls.motorlab,
+    ctaLabel: "Ingresar a MotorLab",
+    secondaryCta: {
+      label: "Solicitar información",
+      href: `mailto:${site.email}?subject=${encodeURIComponent("Consulta 0E3 MotorLab")}&body=${encodeURIComponent("Hola, quiero información sobre 0E3 MotorLab.\n\nNombre:\nTaller:\nCiudad:\nTeléfono:\n")}`,
+    },
+    featured: true,
   },
 ];
 
@@ -431,6 +438,7 @@ export const statusStyles: Record<ProductStatus, string> = {
   "En desarrollo": "bg-blue-500/10 text-blue-400 ring-blue-500/20",
   "Próximamente": "bg-zinc-500/10 text-zinc-400 ring-zinc-500/20",
   "Piloto controlado": "bg-amber-500/10 text-amber-300 ring-amber-500/25",
+  Operativo: "bg-success/10 text-success ring-success/20",
 };
 
 export function getAppPage(slug: string): AppPageEntry | undefined {

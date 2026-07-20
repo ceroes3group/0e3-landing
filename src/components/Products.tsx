@@ -36,7 +36,15 @@ export function Products() {
               : product.href
                 ? "Ver más →"
                 : "Próximamente";
-          const CardInner = (
+          const secondaryCta =
+            "secondaryCta" in product &&
+            product.secondaryCta &&
+            typeof product.secondaryCta === "object" &&
+            "href" in product.secondaryCta &&
+            "label" in product.secondaryCta
+              ? product.secondaryCta
+              : null;
+          const CardBody = (
             <>
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div
@@ -69,11 +77,6 @@ export function Products() {
               <p className="mt-3 text-sm leading-7 text-muted">
                 {product.description}
               </p>
-              {product.href ? (
-                <p className="mt-4 text-sm font-medium text-accent">{ctaLabel}</p>
-              ) : (
-                <p className="mt-4 text-xs text-muted">{ctaLabel}</p>
-              )}
             </>
           );
 
@@ -97,17 +100,32 @@ export function Products() {
               )}
             >
               {product.href ? (
-                isExternalHref(product.href) ? (
-                  <a href={product.href} className="block">
-                    {CardInner}
-                  </a>
-                ) : (
-                  <Link href={product.href} className="block">
-                    {CardInner}
-                  </Link>
-                )
+                <>
+                  {isExternalHref(product.href) ? (
+                    <a href={product.href} className="block">
+                      {CardBody}
+                      <p className="mt-4 text-sm font-medium text-accent">{ctaLabel}</p>
+                    </a>
+                  ) : (
+                    <Link href={product.href} className="block">
+                      {CardBody}
+                      <p className="mt-4 text-sm font-medium text-accent">{ctaLabel}</p>
+                    </Link>
+                  )}
+                  {secondaryCta ? (
+                    <a
+                      href={secondaryCta.href}
+                      className="mt-2 inline-block text-sm font-medium text-muted underline-offset-4 hover:text-white hover:underline"
+                    >
+                      {secondaryCta.label}
+                    </a>
+                  ) : null}
+                </>
               ) : (
-                CardInner
+                <>
+                  {CardBody}
+                  <p className="mt-4 text-xs text-muted">{ctaLabel}</p>
+                </>
               )}
             </motion.article>
           );
